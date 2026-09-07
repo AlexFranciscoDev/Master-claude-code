@@ -15,8 +15,12 @@ Id = aplicar funcionalidad (javascript)
 3. Que todo sea un key sector (seleccionar justo elemento al cual se le va a dar estilos)
 
 */
+html {
+    font-size: 20px;
+}
 
 /* BEM */
+
 .cards {
     width: 400px;
     margin: 10px auto;
@@ -47,4 +51,39 @@ Id = aplicar funcionalidad (javascript)
 
 .card__link--red {
     background: red;
+}
+
+/*
+em: para poder definir 1em se define teniendo en cuenta el elemento padre.
+rem: tiene en cuenta el valor raíz de nuestro documento, el HTML.
+Por defecto 1rem son 16px, pero si nosotros establecemos un valor por defecto en el HTML, podemos reescribir ese tamaño de REM.
+*/
+
+/* Con 10px de font-size, le estamos diciendo que 1rem son 10px */
+.caja {
+    font-size: 2rem;
+    width: 25rem;
+    height: 25rem;
+    text-align: center;
+    background-color: aquamarine;
+    border: 1px solid black;
+}
+
+/* Esto nos permite que si vamos a trabajar con media queries, pueda ser más fácil cambiar los valores*/
+@media (max-width: 768px) {
+    html {
+        font-size: 12px;
+    }
+}
+
+@media (max-width: 528px) {
+    html {
+        font-size: 10px;
+    }
+}
+
+@media (max-width: 528px) {
+    html {
+        font-size: 9px;
+    }
 }
