@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generadores de Datos</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+<body>
+    <div class="background-decor">
+        <div class="blob blob-1"></div>
+        <div class="blob blob-2"></div>
+        <div class="blob blob-3"></div>
+    </div>
+
+    <div class="page">
+        <h1>Generadores de Datos</h1>
+
+        <div class="cards-grid">
+            <!-- Lorem Ipsum Card -->
+            <div class="card">
+                <div class="card-header">
+                    <svg class="card-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M4 6h16v2H4V6zm0 5h16v2H4v-2zm0 5h16v2H4v-2z"/>
+                    </svg>
+                    <h2>Lorem Ipsum</h2>
+                </div>
+                <div class="controls">
+                    <div class="select-group">
+                        <label for="paragraphs">Párrafos:</label>
+                        <select id="paragraphs">
+                            <option value="1">1 párrafo</option>
+                            <option value="2">2 párrafos</option>
+                            <option value="3" selected>3 párrafos</option>
+                            <option value="4">4 párrafos</option>
+                            <option value="5">5 párrafos</option>
+                            <option value="6">6 párrafos</option>
+                            <option value="7">7 párrafos</option>
+                            <option value="8">8 párrafos</option>
+                            <option value="9">9 párrafos</option>
+                            <option value="10">10 párrafos</option>
+                        </select>
+                    </div>
+                    <button class="generate-btn" id="generateBtn">Generar</button>
+                </div>
+                <div class="textarea-wrapper">
+                    <textarea id="loremOutput" placeholder="Aquí aparecerá el Lorem Ipsum generado..."></textarea>
+                </div>
+                <div class="char-counter" id="loremCounter">0 carácteres</div>
+                <div class="button-group">
+                    <button class="copy-btn" id="copyLoremBtn" disabled>📋 Copiar</button>
+                </div>
+            </div>
+
+            <!-- Email Card -->
+            <div class="card">
+                <div class="card-header">
+                    <svg class="card-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                    </svg>
+                    <h2>Email de Prueba</h2>
+                </div>
+                <div class="controls">
+                    <div class="select-group">
+                        <label for="emailDomain">Dominio:</label>
+                        <select id="emailDomain">
+                            <option value="example.com">example.com</option>
+                            <option value="test.dev" selected>test.dev</option>
+                            <option value="temp.email">temp.email</option>
+                            <option value="demo.io">demo.io</option>
+                            <option value="sample.net">sample.net</option>
+                        </select>
+                    </div>
+                </div>
+                <button class="generate-btn" id="generateEmailBtn" style="width: 100%; margin: 15px 0;">🔄 Regenerar</button>
+                <div class="email-output">
+                    <input type="text" id="emailOutput" class="email-input" placeholder="Tu email aparecerá aquí..." readonly>
+                </div>
+                <div class="button-group">
+                    <button class="copy-btn" id="copyEmailBtn" disabled>📋 Copiar</button>
+                </div>
+            </div>
+
+            <!-- Password Card -->
+            <div class="card">
+                <div class="card-header">
+                    <svg class="card-icon" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M18 8h-1V6c0-2.76-2.24-5-5-5s-5 2.24-5 5v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/>
+                    </svg>
+                    <h2>Contraseña Segura</h2>
+                </div>
+                <div class="controls">
+                    <div class="select-group">
+                        <label for="passwordLength">Longitud: <span id="lengthDisplay">16</span></label>
+                        <input type="range" id="passwordLength" min="8" max="32" value="16" class="slider">
+                    </div>
+                </div>
+                <div class="password-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="useUppercase" checked>
+                        <span>Mayúsculas (A-Z)</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="useLowercase" checked>
+                        <span>Minúsculas (a-z)</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="useNumbers" checked>
+                        <span>Números (0-9)</span>
+                    </label>
+                    <label class="checkbox-label">
+                        <input type="checkbox" id="useSymbols" checked>
+                        <span>Símbolos (!@#$%...)</span>
+                    </label>
+                </div>
+                <button class="generate-btn" id="generatePasswordBtn" style="width: 100%; margin: 15px 0;">Generar</button>
+                <div class="password-output">
+                    <input type="text" id="passwordOutput" class="password-input" placeholder="Tu contraseña aparecerá aquí..." readonly>
+                </div>
+                <div class="button-group">
+                    <button class="copy-btn" id="copyPasswordBtn" disabled>📋 Copiar</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="index.js"></script>
+</body>
+</html>
