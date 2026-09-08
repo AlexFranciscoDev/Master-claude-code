@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Habit Tracker</title>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="app-header__inner">
+      <div class="app-header__title">
+        <h1>🌱 Habit Tracker</h1>
+        <p class="app-header__subtitle">Build better habits, one day at a time.</p>
+      </div>
+    </div>
+  </header>
+
+  <main class="app-main">
+    <div class="app-container">
+      <!-- Left Sidebar - Add Habit Form -->
+      <aside class="app-sidebar">
+        <section class="summary" id="summary" aria-label="Progress summary">
+          <div class="summary__stat">
+            <span class="summary__value" id="summary-active">0</span>
+            <span class="summary__label">📋 Active</span>
+          </div>
+          <div class="summary__stat">
+            <span class="summary__value" id="summary-best-streak">0</span>
+            <span class="summary__label">🔥 Best streak</span>
+          </div>
+          <div class="summary__stat">
+            <span class="summary__value" id="summary-today">0</span>
+            <span class="summary__label">✅ Done today</span>
+          </div>
+        </section>
+
+        <section class="new-habit" aria-label="Create a new habit">
+          <h2>Create New Habit</h2>
+          <form id="new-habit-form" class="new-habit__form" novalidate>
+            <label for="habit-name" class="visually-hidden">Habit name</label>
+            <input
+              type="text"
+              id="habit-name"
+              name="habit-name"
+              placeholder="Habit name"
+              autocomplete="off"
+            >
+            <p class="new-habit__label">Choose emoji</p>
+            <div class="new-habit__emoji-picker" id="emoji-picker"></div>
+            <button type="submit" class="new-habit__submit">Create Habit</button>
+          </form>
+          <p class="new-habit__error" id="new-habit-error" hidden></p>
+        </section>
+      </aside>
+
+      <!-- Right Content - Habits List -->
+      <section class="habit-list" aria-label="Your habits">
+        <h2>Your Habits</h2>
+        <ul class="habit-list__items" id="habit-list"></ul>
+        <p class="habit-list__empty" id="habit-list-empty" hidden>
+          No habits yet. Create your first habit on the left! 🌱
+        </p>
+      </section>
+    </div>
+  </main>
+
+  <footer class="app-footer">
+    <p>Stay consistent. Small steps every day lead to big changes. 💪</p>
+  </footer>
+
+  <div id="modal-overlay" class="modal-overlay" hidden></div>
+
+  <script src="assets/js/storage.js"></script>
+  <script src="assets/js/habits.js"></script>
+  <script src="assets/js/ui.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>
