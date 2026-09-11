@@ -1,0 +1,68 @@
+.hero-spotlight {
+  background-size: cover;
+  background-position: center top;
+  background-color: var(--color-surface);
+  border-bottom: 1px solid var(--color-border);
+}
+
+.hero-spotlight__overlay {
+  background: linear-gradient(
+    180deg,
+    rgba(13, 17, 23, 0.4) 0%,
+    rgba(13, 17, 23, 0.85) 70%,
+    rgba(13, 17, 23, 1) 100%
+  );
+  padding: var(--space-7) 0 var(--space-6);
+}
+
+.hero-spotlight__content {
+  max-width: 76rem;
+}
+
+.hero-spotlight__eyebrow {
+  display: inline-block;
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  color: var(--color-primary);
+  font-size: 1.2rem;
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: var(--space-1) var(--space-3);
+  border-radius: var(--radius-pill);
+  margin-bottom: var(--space-3);
+}
+
+.hero-spotlight__title {
+  font-size: 4rem;
+  margin-bottom: var(--space-3);
+}
+
+.hero-spotlight__meta {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  color: var(--color-text-muted);
+  font-size: 1.4rem;
+  margin-bottom: var(--space-3);
+}
+
+.hero-spotlight__overview {
+  color: var(--color-text-muted);
+  font-size: 1.5rem;
+  margin-bottom: var(--space-5);
+  max-width: 60rem;
+}
+
+.hero-spotlight__actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+@media (max-width: 600px) {
+  .hero-spotlight__title {
+    font-size: 2.8rem;
+  }
+}

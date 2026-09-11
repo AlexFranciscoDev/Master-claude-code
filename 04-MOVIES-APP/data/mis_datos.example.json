@@ -1,0 +1,37 @@
+{
+  "watched": {
+    "603": {
+      "addedAt": "2024-01-15T10:00:00.000Z",
+      "userRating": 9,
+      "notes": "Loved the cinematography."
+    }
+  },
+  "watchlist": {
+    "27205": {
+      "addedAt": "2024-01-10T08:30:00.000Z"
+    }
+  },
+  "favorites": {
+    "603": {
+      "addedAt": "2024-01-15T10:05:00.000Z"
+    }
+  },
+  "movieMeta": {
+    "603": {
+      "id": 603,
+      "title": "The Matrix",
+      "posterPath": "/f89U3ADr1oiB1s9GkdPOEpXUk5H.jpg",
+      "year": "1999",
+      "voteAverage": 8.2,
+      "genreIds": [28, 878]
+    },
+    "27205": {
+      "id": 27205,
+      "title": "Inception",
+      "posterPath": "/9gk7adHYeDvHkCSEqAvQNLV5Uge.jpg",
+      "year": "2010",
+      "voteAverage": 8.4,
+      "genreIds": [28, 878, 12]
+    }
+  }
+}

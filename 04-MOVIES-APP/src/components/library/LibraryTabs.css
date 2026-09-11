@@ -1,0 +1,22 @@
+.library-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-5);
+}
+
+.library-tabs__tab {
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius-pill);
+  background-color: var(--color-surface-raised);
+  border: 1px solid var(--color-border);
+  font-size: 1.4rem;
+  font-weight: 600;
+  color: var(--color-text-muted);
+}
+
+.library-tabs__tab.is-active {
+  background-color: var(--color-primary);
+  color: #1a1206;
+  border-color: var(--color-primary);
+}

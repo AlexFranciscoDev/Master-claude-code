@@ -1,0 +1,17 @@
+.library-page {
+  padding-top: var(--space-5);
+}
+
+.library-page .page-heading {
+  margin-top: 0;
+}
+
+.library-page__subtitle {
+  color: var(--color-text-muted);
+  font-size: 1.4rem;
+  margin-bottom: var(--space-5);
+}
+
+.library-page__subtitle code {
+  color: var(--color-secondary);
+}

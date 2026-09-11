@@ -1,0 +1,12 @@
+.rating-stars {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-1);
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--color-text);
+}
+
+.rating-stars__icon {
+  color: var(--color-star);
+}

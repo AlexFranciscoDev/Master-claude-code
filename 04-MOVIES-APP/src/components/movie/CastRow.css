@@ -1,0 +1,38 @@
+.cast-row {
+  display: flex;
+  gap: var(--space-4);
+  overflow-x: auto;
+  padding-bottom: var(--space-2);
+}
+
+.cast-row__item {
+  flex: 0 0 12rem;
+}
+
+.cast-row__photo {
+  width: 12rem;
+  height: 12rem;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-bottom: var(--space-2);
+}
+
+.cast-row__photo--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-faint);
+  font-size: 1.1rem;
+  text-align: center;
+}
+
+.cast-row__name {
+  font-size: 1.3rem;
+  font-weight: 600;
+}
+
+.cast-row__character {
+  font-size: 1.2rem;
+  color: var(--color-text-muted);
+}

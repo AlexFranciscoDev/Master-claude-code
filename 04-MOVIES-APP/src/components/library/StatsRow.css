@@ -1,0 +1,25 @@
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  gap: var(--space-3);
+  margin-bottom: var(--space-5);
+}
+
+.stats-row__card {
+  padding: var(--space-4);
+}
+
+.stats-row__label {
+  font-size: 1.2rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-2);
+}
+
+.stats-row__value {
+  font-size: 2.4rem;
+  font-weight: 700;
+}
+
+.stats-row__value--text {
+  font-size: 1.8rem;
+}
