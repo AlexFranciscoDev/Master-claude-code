@@ -31,3 +31,9 @@ export function getMovieDetail(id) {
     append_to_response: 'credits,videos,recommendations',
   });
 }
+
+export function getPersonDetail(id) {
+  return tmdbFetch(`/person/${id}`, {
+    append_to_response: 'movie_credits',
+  });
+}

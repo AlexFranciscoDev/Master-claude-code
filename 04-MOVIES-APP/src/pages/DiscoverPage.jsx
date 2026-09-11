@@ -10,6 +10,9 @@ import { ErrorMessage } from '../components/common/ErrorMessage';
 import { useFetch } from '../hooks/useFetch';
 import { useQueryParams } from '../hooks/useQueryParams';
 
+const ITEMS_PER_PAGE = 18;
+const MAX_PAGES_TO_LOAD = 50;
+
 export function DiscoverPage() {
   const { getParam, setParam, setParams } = useQueryParams();
 
@@ -22,17 +25,37 @@ export function DiscoverPage() {
     sortBy: getParam('sort', 'popularity.desc'),
   };
 
+  const currentYear = new Date().getFullYear();
   const hasActiveFilters = Boolean(filters.genreId || filters.year || filters.minRating);
 
   const { data: genresData } = useFetch(() => getGenres(), []);
   const genres = genresData?.genres || [];
 
-  const { data, isLoading, error, refetch } = useFetch(() => {
-    if (hasActiveFilters) {
-      return discoverMovies({ ...filters, page });
-    }
-    return scope === 'trending' ? getTrending(page) : getNowPlaying(page);
-  }, [scope, page, filters.genreId, filters.year, filters.minRating, filters.sortBy, hasActiveFilters]);
+  const { data: allResults, isLoading, error, refetch } = useFetch(() => {
+    const fetchPages = async () => {
+      let allMovies = [];
+      let seenIds = new Set();
+      let totalPages = 1;
+      for (let i = 1; i <= MAX_PAGES_TO_LOAD; i++) {
+        let pageData;
+        if (hasActiveFilters) {
+          pageData = await discoverMovies({ ...filters, year: filters.year || currentYear, page: i });
+        } else {
+          pageData = scope === 'trending' ? await getTrending(i) : await getNowPlaying(i);
+        }
+        for (const movie of pageData.results) {
+          if (!seenIds.has(movie.id)) {
+            seenIds.add(movie.id);
+            allMovies.push(movie);
+          }
+        }
+        totalPages = pageData.total_pages;
+        if (i >= pageData.total_pages) break;
+      }
+      return { results: allMovies, totalPages };
+    };
+    return fetchPages();
+  }, [scope, filters.genreId, filters.year, filters.minRating, filters.sortBy, hasActiveFilters, currentYear]);
 
   const genreMap = useMemo(() => {
     const map = {};
@@ -68,13 +91,32 @@ export function DiscoverPage() {
     setParams({ genre: undefined, year: undefined, rating: undefined, sort: undefined, page: '1' });
   };
 
-  const movies = data?.results || [];
-  const featuredMovie = !hasActiveFilters && page === 1 ? movies[0] : null;
-  const gridMovies = featuredMovie ? movies.slice(1) : movies;
+  const paginatedResults = useMemo(() => {
+    if (!allResults?.results) return { movies: [], totalPages: 1, featuredMovie: null };
+
+    const allMovies = allResults.results;
+    const featuredMovie = !hasActiveFilters && page === 1 ? allMovies[0] : null;
+
+    let moviesToPaginate;
+    let startIdx;
+
+    if (page === 1 && featuredMovie) {
+      moviesToPaginate = allMovies.slice(1);
+      startIdx = 0;
+    } else {
+      moviesToPaginate = allMovies;
+      startIdx = (page - 1) * ITEMS_PER_PAGE;
+    }
+
+    const paginatedMovies = moviesToPaginate.slice(startIdx, startIdx + ITEMS_PER_PAGE);
+    const totalPages = Math.ceil(moviesToPaginate.length / ITEMS_PER_PAGE);
+
+    return { movies: paginatedMovies, totalPages, featuredMovie };
+  }, [allResults, page, hasActiveFilters]);
 
   return (
     <>
-      {featuredMovie && <HeroSpotlight movie={featuredMovie} />}
+      {paginatedResults.featuredMovie && <HeroSpotlight movie={paginatedResults.featuredMovie} />}
 
       <main className="container">
         <section aria-labelledby="discover-heading">
@@ -87,12 +129,12 @@ export function DiscoverPage() {
 
           {isLoading && <LoadingSpinner label="Loading movies…" />}
           {error && <ErrorMessage message={error.message} onRetry={refetch} />}
-          {!isLoading && !error && <MovieGrid movies={gridMovies} />}
+          {!isLoading && !error && <MovieGrid movies={paginatedResults.movies} />}
 
-          {!isLoading && !error && data && (
+          {!isLoading && !error && paginatedResults.totalPages > 1 && (
             <Pagination
-              currentPage={data.page}
-              totalPages={Math.min(data.total_pages || 1, 500)}
+              currentPage={page}
+              totalPages={paginatedResults.totalPages}
               onPageChange={(nextPage) => setParam('page', String(nextPage))}
             />
           )}

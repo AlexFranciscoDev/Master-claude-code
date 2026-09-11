@@ -1,11 +1,35 @@
 import './FilterBar.css';
 
-const YEARS = Array.from({ length: 40 }, (_, index) => new Date().getFullYear() - index);
+const currentYear = new Date().getFullYear();
+const YEARS = Array.from({ length: 40 }, (_, index) => currentYear - index);
 const RATINGS = [9, 8, 7, 6, 5];
+
+function toggleSortOrder(sortBy) {
+  if (!sortBy) return sortBy;
+  return sortBy.endsWith('.desc') ? sortBy.replace('.desc', '.asc') : sortBy.replace('.asc', '.desc');
+}
 
 export function FilterBar({ genres, filters, onChange }) {
   const handleFieldChange = (field) => (event) => {
     onChange({ ...filters, [field]: event.target.value });
+  };
+
+  const handleToggleSortOrder = () => {
+    const newSortBy = toggleSortOrder(filters.sortBy);
+    onChange({ ...filters, sortBy: newSortBy });
+  };
+
+  const getSortLabel = () => {
+    const order = filters.sortBy?.endsWith('.asc') ? '↑' : '↓';
+    const base = filters.sortBy?.replace(/\.(asc|desc)$/, '');
+
+    const labels = {
+      'popularity': 'Popularity',
+      'vote_average': 'Rating',
+      'primary_release_date': 'Release Date',
+    };
+
+    return `${labels[base] || 'Popularity'} ${order}`;
   };
 
   return (
@@ -51,10 +75,15 @@ export function FilterBar({ genres, filters, onChange }) {
         <select value={filters.sortBy} onChange={handleFieldChange('sortBy')}>
           <option value="popularity.desc">Popularity</option>
           <option value="vote_average.desc">Rating</option>
-          <option value="primary_release_date.desc">Newest</option>
-          <option value="primary_release_date.asc">Oldest</option>
+          <option value="primary_release_date.desc">Release Date</option>
         </select>
       </label>
+
+      <div className="filter-bar__sort-toggle">
+        <button type="button" className="filter-bar__toggle-btn" onClick={handleToggleSortOrder} title="Toggle sort order">
+          {getSortLabel()}
+        </button>
+      </div>
     </form>
   );
 }

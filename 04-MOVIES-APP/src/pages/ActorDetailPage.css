@@ -1,0 +1,132 @@
+.actor-detail {
+  padding-top: var(--space-4);
+}
+
+.actor-detail__breadcrumb {
+  font-size: 1.2rem;
+  color: var(--color-text-muted);
+  margin-bottom: var(--space-4);
+}
+
+.actor-detail__hero {
+  display: grid;
+  grid-template-columns: 35rem 1fr;
+  gap: var(--space-6);
+  margin-bottom: var(--space-6);
+  align-items: flex-start;
+}
+
+.actor-detail__photo-wrap {
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  position: sticky;
+  top: var(--space-4);
+}
+
+.actor-detail__photo {
+  width: 100%;
+  aspect-ratio: 2 / 3;
+  object-fit: cover;
+}
+
+.actor-detail__photo--placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--color-surface-raised);
+  color: var(--color-text-faint);
+  font-size: 1.3rem;
+  aspect-ratio: 2 / 3;
+}
+
+.actor-detail__info {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.actor-detail__name {
+  font-size: 3.2rem;
+  margin: 0;
+  line-height: 1.1;
+}
+
+.actor-detail__meta {
+  color: var(--color-text-muted);
+  font-size: 1.4rem;
+  margin: 0;
+}
+
+.actor-detail__biography {
+  max-height: 40rem;
+  overflow-y: auto;
+  padding-right: var(--space-3);
+}
+
+.actor-detail__biography::-webkit-scrollbar {
+  width: 0.6rem;
+}
+
+.actor-detail__biography::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.actor-detail__biography::-webkit-scrollbar-thumb {
+  background: var(--color-border);
+  border-radius: 0.3rem;
+}
+
+.actor-detail__biography::-webkit-scrollbar-thumb:hover {
+  background: var(--color-text-muted);
+}
+
+.actor-detail__biography h2 {
+  font-size: 1.8rem;
+  margin: 0 0 var(--space-3) 0;
+}
+
+.actor-detail__biography-text {
+  color: var(--color-text-muted);
+  font-size: 1.5rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+.actor-detail__panel {
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+}
+
+.actor-detail__panel h2 {
+  font-size: 1.8rem;
+  margin-bottom: var(--space-3);
+}
+
+@media (max-width: 1024px) {
+  .actor-detail__hero {
+    grid-template-columns: 28rem 1fr;
+    gap: var(--space-4);
+  }
+}
+
+@media (max-width: 800px) {
+  .actor-detail__hero {
+    grid-template-columns: 1fr;
+    align-items: center;
+  }
+
+  .actor-detail__photo-wrap {
+    position: static;
+    max-width: 28rem;
+    margin: 0 auto;
+  }
+
+  .actor-detail__name {
+    font-size: 2.8rem;
+  }
+
+  .actor-detail__biography {
+    max-height: none;
+  }
+}
