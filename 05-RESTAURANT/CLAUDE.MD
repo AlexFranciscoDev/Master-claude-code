@@ -37,14 +37,6 @@ Funcionalidades de la aplicación:
     - Mensajes de confirmación
 
 
-
-Información del api externa:
-- El api que vamos a usar es TMDB (The Movie Database), que el api es gratis.
-- La url de la documentación son estas (si no sbes como hacer algo con el api, investiga en la documentación):
-https://developer.themoviedb.org/reference/getting-started
-https://developer.themoviedb.org/docs/getting-started
-- El API KEY para usar el api rest, lo tendrás en el fichero .env que está en la raiz del proyecto. La variable que tienes que usar es API_KEY y debes usar la libreria dotenv para acceder a ella (si no está instalada instalala).
-
 Stack de tecnologías:
 - HTML5
 - CSS (con Tailwind)
