@@ -1,0 +1,71 @@
+@import 'tailwindcss';
+
+/*
+  Base font-size is 62.5% of the browser default (16px), so 1rem = 10px.
+  Tailwind's spacing scale (p-4, gap-2, ...) is rem-based and stays
+  proportionally correct automatically. Its text-size scale is also
+  rem-based but was authored assuming 1rem = 16px, so those tokens are
+  re-declared below (x1.6) to keep the same real-world sizes on screen.
+*/
+html {
+  font-size: 62.5%;
+}
+
+body {
+  margin: 0;
+}
+
+@theme {
+  --font-sans: system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  --color-bg: #101820;
+  --color-surface: #182430;
+  --color-surface-raised: #1f2e3b;
+  --color-border: #2a3947;
+  --color-text: #edeff2;
+  --color-text-muted: #9aa7b2;
+
+  --color-accent: #ffb648;
+  --color-accent-strong: #ffa726;
+
+  --color-status-todo: #9aa7b2;
+  --color-status-progress: #5b8def;
+  --color-status-review: #b389f0;
+  --color-status-done: #3ecf8e;
+
+  --color-priority-low: #9aa7b2;
+  --color-priority-medium: #ffb648;
+  --color-priority-high: #ef5b5b;
+
+  --color-danger: #ef5b5b;
+
+  --text-xs: 1.2rem;
+  --text-xs--line-height: calc(1.6 / 1.2);
+  --text-sm: 1.4rem;
+  --text-sm--line-height: calc(2 / 1.4);
+  --text-base: 1.6rem;
+  --text-base--line-height: calc(2.4 / 1.6);
+  --text-lg: 1.8rem;
+  --text-lg--line-height: calc(2.8 / 1.8);
+  --text-xl: 2rem;
+  --text-xl--line-height: calc(2.8 / 2);
+  --text-2xl: 2.4rem;
+  --text-2xl--line-height: calc(3.2 / 2.4);
+  --text-3xl: 3rem;
+  --text-3xl--line-height: calc(3.6 / 3);
+  --text-4xl: 3.6rem;
+  --text-4xl--line-height: calc(4 / 3.6);
+
+  --animate-toast-in: toast-in 0.2s ease-out;
+
+  @keyframes toast-in {
+    from {
+      opacity: 0;
+      transform: translateY(0.8rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
